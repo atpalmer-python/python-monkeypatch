@@ -1,5 +1,9 @@
 #include "Python.h"
 
+PyDoc_STRVAR(module__doc__,
+    "Provides an interface to add user-defined attributes to built-in types.");
+
+PyDoc_STRVAR(monkeypatch__doc__, "Patch built-in types with custom attributes.");
 static PyObject *monkeypatch(PyObject *self, PyObject *args) {
     PyObject *target;
     PyObject *attr_name;
@@ -14,14 +18,14 @@ static PyObject *monkeypatch(PyObject *self, PyObject *args) {
 }
 
 struct PyMethodDef methods[] = {
-    {"monkeypatch", monkeypatch, METH_VARARGS, ""},
+    {"monkeypatch", monkeypatch, METH_VARARGS, monkeypatch__doc__},
     {0},
 };
 
 struct PyModuleDef module = {
     .m_base = PyModuleDef_HEAD_INIT,
     .m_name = "monkeypatch",
-    .m_doc = "",
+    .m_doc = module__doc__,
     .m_size = 0,
     .m_methods = methods,
 };
