@@ -14,8 +14,8 @@ static PyObject *monkeypatch(PyObject *self, PyObject *args) {
 }
 
 struct PyMethodDef methods[] = {
-    { "monkeypatch", monkeypatch, METH_VARARGS, "" },
-    { 0 },
+    {"monkeypatch", monkeypatch, METH_VARARGS, ""},
+    {0},
 };
 
 struct PyModuleDef module = {
